@@ -1,7 +1,7 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance Force
 
-; Win+B - переключение на Chrome без сворачивания
+; Win+B - switch to Chrome without wrapping
 #b::
 {
     ; Проверяем, существует ли окно Chrome
@@ -48,7 +48,7 @@
     }
 }
 
-; Win+V - переключение на VS Code без сворачивания
+; Win+V - switch to VS Code without wrapping
 #v::
 {
     ; Проверяем, существует ли окно VS Code
@@ -95,7 +95,7 @@
     }
 }
 
-; Функция для центрирования окна на экране
+; Function to center a window on the screen
 CenterWindow(hwnd) {
     WinGetPos &x, &y, &width, &height, hwnd
     
@@ -111,7 +111,7 @@ CenterWindow(hwnd) {
     WinMove newX, newY,,, hwnd
 }
 
-; Функция для получения активного монитора
+; Function to get the active monitor
 GetActiveMonitor() {
     ; Используем позицию мыши для определения активного монитора
     CoordMode "Mouse", "Screen"
@@ -128,7 +128,7 @@ GetActiveMonitor() {
     return 1 ; По умолчанию первый монитор
 }
 
-; Дополнительные горячие клавиши для управления размером
+; Additional hotkeys for controlling window size
 #+b:: ; Win+Shift+B - развернуть на весь экран
 {
     if WinExist("ahk_exe chrome.exe") {
@@ -138,7 +138,7 @@ GetActiveMonitor() {
     }
 }
 
-#^b:: ; Win+Ctrl+B - восстановить нормальный размер
+#^b:: ; Win+Ctrl+B - restore normal size
 {
     if WinExist("ahk_exe chrome.exe") {
         chromeID := WinExist("ahk_exe chrome.exe")
@@ -148,7 +148,7 @@ GetActiveMonitor() {
     }
 }
 
-#!b:: ; Win+Alt+B - перезапустить Chrome
+#!b:: ; Win+Alt+B - restart Chrome
 {
     ; Закрываем все окна Chrome
     try {
@@ -170,7 +170,7 @@ GetActiveMonitor() {
     }
 }
 
-#+v:: ; Win+Shift+V - развернуть на весь экран
+#+v:: ; Win+Shift+V - maximize window
 {
     if WinExist("ahk_exe Code.exe") {
         vscodeID := WinExist("ahk_exe Code.exe")
@@ -179,7 +179,7 @@ GetActiveMonitor() {
     }
 }
 
-#^v:: ; Win+Ctrl+V - восстановить нормальный размер
+#^v:: ; Win+Ctrl+V - restore normal size
 {
     if WinExist("ahk_exe Code.exe") {
         vscodeID := WinExist("ahk_exe Code.exe")
@@ -189,7 +189,7 @@ GetActiveMonitor() {
     }
 }
 
-#!v:: ; Win+Alt+V - перезапустить VS Code
+#!v:: ; Win+Alt+V - restart VS Code
 {
     ; Закрываем все окна VS Code
     if WinExist("ahk_exe Code.exe") {
@@ -225,7 +225,7 @@ GetActiveMonitor() {
     }
 }
 
-; Дополнительно: Win+Alt+Shift+V - открыть VS Code в текущей папке проводника
+; Additionally: Win+Alt+Shift+V - open VS Code in the current folder of the file explorer
 #!+v::
 {
     ; Проверяем, активно ли окно проводника
